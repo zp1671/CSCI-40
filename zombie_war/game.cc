@@ -51,7 +51,7 @@ int main() {
 	sleep(2);
 
 	//main loop
-	while (playerAlive && zombiesKilled < zombieCount) {
+	while (playerHealth != 0) {
 
 		int zombieSkill = createZombie();
 
@@ -111,8 +111,6 @@ int main() {
 		}
 
 		cout << endl;
-		sleep(1);
-
 	}
 
 	//End game
