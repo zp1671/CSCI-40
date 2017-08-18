@@ -144,7 +144,7 @@ int main() {
 	cout << "Final Score: " << playerScore << endl << endl;
 
 	cout << "Would you like to play again? " << endl;
-	cin.get()
+	cin.get();
 
 }
 
