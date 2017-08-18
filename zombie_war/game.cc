@@ -10,7 +10,7 @@ int createZombie() {
 
 	int generatedNumber;
 
-	generatedNumber = rand() % 54;
+	generatedNumber = rand() % 67;
 
 	if (generatedNumber > 100)
 		return 11;
@@ -43,16 +43,16 @@ int main() {
 	cin >> playerName;
 
 	//Zombie count
-	cout << "How many zombies would you like to fight? ";
+	cout << "How many zombies would you like to fight? " << endl << endl;
 	cin >> zombieCount;
 
-	cout << "Get ready to fight for your life " << playerName << "!" << endl;
+	cout << "Get ready to fight for your life " << playerName << "!" << endl << endl << endl << endl;
 	cout << "You have " << playerHealth << " health!" << endl;
 
 	sleep(2);
 
 	//main loop
-	while (playerHealth != 0) {
+	while (playerHealth != 0 && playerAlive && zombiesKilled < zombieCount) {
 
 		int zombieSkill = createZombie();
 
@@ -129,12 +129,6 @@ int main() {
 	cout << "Zombies Killed: " << zombiesKilled << endl;
 	cout << "Final Score: " << playerScore << endl << endl;
 
-<<<<<<< HEAD
-	cout << "Would you like to play again? " << endl;
-	cin.get();
-
-=======
->>>>>>> refs/remotes/origin/master
 }
 
 
