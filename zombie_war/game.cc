@@ -20,21 +20,7 @@ int createZombie() {
 
 }
 
-void loop(void) {
-
-	atextit(loop);
-
-	if (cin.get("No")) {
-
-		exit(0);
-
-	}
-
-}
-
 int main() {
-
-	loop();
 
 	srand(time(NULL));
 	char enter;
@@ -142,9 +128,6 @@ int main() {
 
 	cout << "Zombies Killed: " << zombiesKilled << endl;
 	cout << "Final Score: " << playerScore << endl << endl;
-
-	cout << "Would you like to play again? " << endl;
-	cin.get()
 
 }
 
