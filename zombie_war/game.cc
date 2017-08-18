@@ -75,7 +75,7 @@ int main() {
 
 			playerAlive = false;
 			playerHealth = 0;
-			cout << "You have died." << endl;
+			cout << "You have died. The zombie was too strong for you!" << endl;
 
 			//Player killed the zombie
 		} else {
