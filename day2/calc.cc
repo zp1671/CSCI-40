@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -43,7 +44,77 @@ int main() {
 
 	cout << endl << endl << endl;
 
-	cout << "Congrats you changed your values" << endl << "X = " << x << endl << "Y = " << y << endl << "Z = " << z << endl;
+	cout << "Congrats you changed your values" << endl << "X = " << x << endl << "Y = " << y << endl << "Z = " << z << endl << endl << endl << endl << endl;
 
+	cout << "Lets do some maths! Please select an option:" << endl;
+	cout << "1 - Addition" << endl;
+	cout << "2 - Subtract" << endl;
+	cout << "3 - Multiply" << endl;
+	cout << "4 - Divide" << endl;
+	cout << "5 - Advanced Options" << endl;
+
+	int selectedValue = 0;
+	int firstValue = 0;
+	int secondValue = 0;
+
+	cin >> selectedValue;
+	cout << selectedValue;
+
+	cout << "Enter the first value: " << endl;
+	cin >> firstValue ;
+
+	cout << "Enter the second value: " << endl;
+	cin >> secondValue;
+
+	switch (selectedValue) {
+
+	case 1:
+		cout << "Your result value is... " << firstValue + secondValue << endl;
+		break;
+	case 2:
+		cout << "Your result value is... " << firstValue - secondValue << endl;
+		break;
+	case 3:
+		cout << "Your result value is... " << firstValue * secondValue << endl;
+		break;
+	case 4:
+		cout << "Your result value is... " << firstValue / secondValue << endl;
+		break;
+	case 5:
+		cout << "You have selected Advanced Options. Please select one of the options below." << endl << endl;
+		cout << "1 - Exponential" << endl;
+		cout << "2 - Square Root" << endl;
+
+		int advancedOption = 0;
+
+		switch (advancedOption) {
+		case 1:
+			cout << pow(firstValue, secondValue) << endl;
+			break;
+		case 2:
+			cout << sqrt(firstValue) << endl;
+			break;
+		}
+
+
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
