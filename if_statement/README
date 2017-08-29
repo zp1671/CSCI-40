@@ -1,0 +1,43 @@
+========================================
+	Retirement Calculator App
+========================================
+
+For this assignment, you will take from the user 
+their current financial status as well as their
+goal for retirement and see if they will hit
+their goal.
+
+You will use floats for everything, and will 
+input from the user the following values:
+1) Current retirement balance
+2) Years to retirement
+3) Monthly contribution
+4) Average interest rate across entire investment.
+For example, if this is 10, this means your entire
+investment will be increased by 10% (x1.1) at the
+end of the investment period.
+5) Target/Goal - how much money you want to have when
+you retire
+
+After every value you input from the user, you
+will use an if statement to vet their input
+to make sure it is valid. If it is NOT valid
+then you will print "BAD INPUT" to the screen
+and do an exit(1) to quit.
+
+The valid ranges for #1 through #4 above are:
+1) 0 to 100,000,000,000 (100 billion dollars)
+2) 0.082 (one month) to 60 (years)
+3) 0 to 1,000,000 (1 million dollars)
+4) 0 to 1,000 (100 = 100% interest, which means your
+total investment will have doubled by the end of the
+time period)
+5) 0 to 1,000,000,000,000 (1 trillion dollars)
+
+After you vet the input, you will do the calculations.
+
+If the total amount of money they have at retirement
+meets or exceeds the target, then print:
+"Congrats, you will be fine when you retire.\n";
+If they will not hit the target, then print:
+"Sorry, but you will need to invest more into retirement.\n";
