@@ -22,19 +22,19 @@ int main() {
 		cout << endl;
 
 	}
-
-	for (int y = selectedHeight; y > -1; y--) {
-
-		cout << "* ";
-
-		for (int z = 0; z < y; z++) {
+	/*
+		for (int y = selectedHeight; y > -1; y--) {
 
 			cout << "* ";
 
+			for (int z = 0; z < y; z++) {
+
+				cout << "* ";
+
+			}
+
+			cout << endl;
+
 		}
-
-		cout << endl;
-
-	}
-
+	*/
 }

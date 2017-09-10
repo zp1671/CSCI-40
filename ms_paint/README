@@ -1,0 +1,8 @@
+For this assignment you will input the data needed to draw a circle, a
+rectangle, and a triangle on the screen
+
+You will then draw them on the screen.
+
+You will also need to thoroughly vet the input to see that it is valid
+
+Sample runs can be seen in SAMPLE_RUNS

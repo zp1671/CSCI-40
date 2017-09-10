@@ -1,0 +1,86 @@
+Welcome to Microsloth Paint 1981 Edition!
+You will draw a triangle, a rectangle, and a circle on the screen.
+Please enter the center point for a circle (x,y):
+2 3 2
+Please enter the radius for the circle:
+Please enter the points defining a rectangle (x_min, x_max, y_min, y_max):
+0 0 0 0
+Please enter the points defining a triangle (x_min, x_max, y_min, y_max):
+7 10
+7 10
+*
+  *
+ ***
+*****
+ ***
+  *
+
+
+       *
+       **
+       ***
+--------------------------------------------------------------------------------
+Welcome to Microsloth Paint 1981 Edition!
+You will draw a triangle, a rectangle, and a circle on the screen.
+Please enter the center point for a circle (x,y):
+5 5 1
+Please enter the radius for the circle:
+Please enter the points defining a rectangle (x_min, x_max, y_min, y_max):
+0 2 0 4
+Please enter the points defining a triangle (x_min, x_max, y_min, y_max):
+10 19
+10 19
+***
+***
+***
+***
+***  *
+    ***
+     *
+
+
+
+
+          *
+          **
+          ***
+          ****
+          *****
+          ******
+          *******
+          ********
+          *********
+
+--------------------------------------------------------------------------------
+Welcome to Microsloth Paint 1981 Edition!
+You will draw a triangle, a rectangle, and a circle on the screen.
+Please enter the center point for a circle (x,y):
+10 10 5
+Please enter the radius for the circle:
+Please enter the points defining a rectangle (x_min, x_max, y_min, y_max):
+0 10
+0 5
+Please enter the points defining a triangle (x_min, x_max, y_min, y_max):
+10 19
+10 15
+***********
+***********
+***********
+***********
+***********
+***********
+       *******
+      *********
+      *********
+      *********
+     ***********
+      *********
+      *********
+      *********
+       *******
+          ***
+          ****
+          ****
+          *****
+          *****
+
