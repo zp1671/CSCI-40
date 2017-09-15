@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cmath>
-#include <string>
 using namespace std;
 
 //Returns true if the point defined by (x,y) is within the circle defined
@@ -11,7 +10,7 @@ bool is_in_circle(int x, int y, int circle_x, int circle_y, float radius) {
 	float fml = sqrt(pow(circle_x - x, 2) + pow(circle_y - y, 2));
 	cout << fml << endl;
 
-	if (fml <= radius) {
+	if (fml < radius) {
 
 		return true;
 	}

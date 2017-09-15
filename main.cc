@@ -6,43 +6,40 @@ using namespace std;
 // by the center point (circle_x,circle_y) and radius "radius"
 bool is_in_circle(int x, int y, int circle_x, int circle_y, float radius) {
 	//YOU: Pythagorus calculation: a^2 + b^2 = c^2 and all that
-
-	float fml = sqrt(pow(circle_x - x, 2) + pow(circle_y - y, 2));
-
-	if (fml <= radius) {
-
-		return true;
-
-	} else {
-
+	if (pow(x - circle_x, 2) + pow(y - circle_y, 2) > pow(radius, 2))
 		return false;
-
-	}
+	else if (circle_x == 0 && circle_y == 0 && radius == 0.0f)
+		return false;
+	return true;
 }
 
 //Returns true if x and y are within (>= min and <= max) the rectangle
-bool is_in_rect(int x, int y, int x_min, int x_max, int y_min, int y_max) {
+bool is_in_rect(int y, int x, int x_min, int x_max, int y_min, int y_max) {
 	//YOU
-	if (x <= x_max && x >= x_min && y <= y_max && y >= y_min) {
+	if (x >= x_min && x <= x_max && y >= y_min && y <= y_max)
 		return true;
-	} else {
-		return false;
-	}
+
+	return false;
 }
 
 //Returns true if x and y are within a right triangle that is the bottom left half
 // of the equivalent right triangle
-bool is_in_triangle(int x, int y, int x_min, int x_max, int y_min, int y_max) {
+bool is_in_triangle(int y, int x, int x_min, int x_max, int y_min, int y_max) {
 	//YOU
-	if (x >= x_min && x <= x_max && y >= x_min && y <= x_max && ((x * (y_max - y_min)) > (y * (x_max - x_min)))) {
-
-		return true;
-
-	} else {
+	if (x_min == 0 && x_max == 0 && y_min ==0 && y_max == 0)
 		return false;
-	}
-}
+	else if (x_min == x_max) {
+		if (x == x_min && y >= y_min && y <= y_max)
+			return true;
+		else return false;}
 
+	float m = (y_max - y_min) / (x_max - x_min);
+		if (x < x_min || y < y_min || y > y_max || x > x_max)
+			return false;
+		else if (y < m*(x-x_min) + y_min)
+			return false;
+		else return true;	
+}
 void die() {
 	cout << "INVALID MEME ERROR.\n";
 	exit(1);
@@ -69,7 +66,7 @@ int main() {
 	int tri_y_max = 0; //The bottom edge of the triangle
 
 	cout << "Please enter the center point for a circle (x,y):\n";
-	cin >> circle_x >> circle_y; //Note: this is not a typo, y is x and vice versa.
+	cin >> circle_y >> circle_x; //Note: this is not a typo, y is x and vice versa.
 	if (!cin) die();
 	if (circle_x < 0 || circle_x >= SIZE_X) die();
 	if (circle_y < 0 || circle_y >= SIZE_Y) die();
@@ -77,23 +74,30 @@ int main() {
 	cout << "Please enter the radius for the circle:\n";
 	cin >> radius;
 	//YOU: Vet the input
+	if (!cin || radius <= 0.0f)
+		die();
 
 	cout << "Please enter the points defining a rectangle (x_min, x_max, y_min, y_max):\n";
 	cin >> rect_x_min >> rect_x_max >> rect_y_min >> rect_y_max; //Get rect
 	//YOU: Vet the input
+	if (!cin || rect_y_min < 0 || rect_y_min >= SIZE_Y || rect_y_max < 0 || rect_y_max >= SIZE_Y || rect_x_min < 0 || rect_x_min >= SIZE_X || rect_x_max < 0 || rect_x_max >= SIZE_X || rect_x_min > rect_x_max || rect_y_min > rect_y_max)
+		die();
 
 	cout << "Please enter the points defining a triangle (x_min, x_max, y_min, y_max):\n";
 	cin >> tri_x_min >> tri_x_max >> tri_y_min >> tri_y_max; //Tri hard
 	//YOU: Vet the input
 
+	if (!cin || tri_y_min < 0 || tri_y_min >= SIZE_Y || tri_y_max < tri_y_min || tri_y_max >= SIZE_Y || tri_x_min < 0 || tri_x_min >= SIZE_X || tri_x_max < tri_y_min || tri_x_max >= SIZE_X)
+		die();
+
 	//Main loop
-	for (int i = 0; i < SIZE_Y; i++) { //Across every row
-		for (int j = 0; j < SIZE_X; j++) { //Across every column
+	for (int i = 0; i < SIZE_X; i++) {
+		for (int j = 0; j < SIZE_Y; j++) {
 			//If the current pixel is within any of the three of them
 			// draw a '*', otherwise a ' '.
-			if (is_in_circle(j, i, circle_x, circle_y, radius) ||
-			        is_in_rect(j, i, rect_x_min, rect_x_max, rect_y_min, rect_y_max) ||
-			        is_in_triangle(j, i, tri_x_min, tri_x_max, tri_y_min, tri_y_max)) {
+			if (is_in_circle(i, j, circle_x, circle_y, radius) ||
+			        is_in_rect(i, j, rect_x_min, rect_x_max, rect_y_min, rect_y_max) ||
+			        is_in_triangle(i, j, tri_x_min, tri_x_max, tri_y_min, tri_y_max)) {
 				cout << '*';
 			} else {
 				cout << ' ';
