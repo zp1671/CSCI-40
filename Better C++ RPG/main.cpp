@@ -279,7 +279,6 @@ void gunStore() {
 			clrScreen();
 			cout << "You returned to the center of the map excited." << endl;
 			sleep(1);
-			p
 		} else {
 			cout << "You have returned to the center of the map sad because there were no bullets in the gun shop." << endl;
 			sleep(1);
