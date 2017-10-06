@@ -9,6 +9,7 @@ using namespace std;
 //if currentStore == 2 then they are in the Medical Office
 //if currentStore == 3 then they are in the Gun Shop
 //if currentStore == 4 then they are in the Food Court
+int currentStore = 0;
 
 //Random Vars worth a look at
 int selectedOption = 0;
