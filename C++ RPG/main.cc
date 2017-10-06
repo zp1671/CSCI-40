@@ -151,117 +151,6 @@ void medicalOffice() {
 
 }
 
-void clothingStore() {
-	cout << "You are in the clothing store." << endl;
-	sleep(1);
-	clrScreen();
-	if (randomNumberGenerator() > 5) {
-		cout << "You have found 5 bandages. Would you like to take them?" << '\n';
-		cout << "1 - Yes" << '\n';
-		cout << "2 - No" << '\n';
-		cin >> selectedOption;
-		if (!cin || selectedOption > 2 || selectedOption < 1) die();
-		if (selectedOption == 1) {
-			globalNumberofBandages += 5;
-			cout << "You now have " << globalNumberofBandages << " bandages" << '\n';
-			sleep(1);
-			if (rollOfDice > 5) {
-				cout << "Would you like to go to the medical office or the food court?" << '\n';
-				cout << "1 - Medical Office" << '\n';
-				cout << "2 - Food Court" << '\n';
-				cin >> selectedOption;
-				if (!cin || selectedOption > 2  || selectedOption < 1) die();
-				if (selectedOption == 1) {
-					medicalOffice();
-					sleep(1);
-				} else {
-					foodCourt();
-					sleep(1);
-				}
-			}
-		} else {
-			cout << "You are stupid for not taking the help thus you die. #NaturalSelection" << '\n';
-			haveBeenKilled();
-		}
-	} else {
-		cout << "The store has already been raided. You should comeback another time to check for any goods." << '\n';
-		sleep(1);
-	}
-	goToNextDay();
-	main();
-}
-
-void gunStore() {
-	cout << "You close up onto the gun store and peer through one of the glas display windows you see a few zombies already inside." << endl;
-	cout << "You realize that there is only two options for you to do." << endl;
-	cout << "You only have " << globalNumberofBullets << " bullets" << endl;
-	cout << "1 - Take out your gun and shoot them." << endl;
-	cout << "2 - take them out quietly one by one." << endl;
-	cin >> selectedOption;
-	if (!cin || selectedOption > 2 || selectedOption < 1) die();
-
-	if (selectedOption == 1) {
-		killWithGun();
-	} else {
-		killSilently();
-	}
-
-}
-
-void killWithGun() {
-	if (globalNumberofBullets == 0) {
-		cout << "You have been killed by the zombies due to not having bullets." << endl;
-		haveBeenKilled();
-	} else if (globalNumberofBullets != 0) {
-		for (size_t i = 0; i < globalNumberofBullets; i++) {
-			cout << "Shooting zombie..." << endl;
-			sleep(1);
-			if (randomNumberGenerator() > 4) {
-				globalNumberofGunKilledZombies++;
-			} else {
-				cout << "You missed try again!" << endl;
-			}
-			if (globalNumberofGunKilledZombies == 5) break;
-		}
-		cout << "You have killed " << globalNumberofGunKilledZombies << " zombies." << endl;
-		if (globalNumberofGunKilledZombies >= 5) {
-			cout << "You have completed the killing zombies by gun puzzle";
-			completedPuzzles++;
-		}
-		sleep(4);
-		goToNextDay();
-		sleep(1);
-		clrScreen();
-		main();
-	}
-}
-
-void killSilently() {
-	for (size_t i = 0; i < 10; i++) {
-		cout << "You are attacking a zombie..." << endl;
-		sleep(1);
-		if (randomNumberGenerator() > 3) {
-			globalNumberofSilentKilledZombies++;
-		} else {
-			globalPlayerHeath = globalPlayerHeath * 0.95;
-			cout << "Ouch!!! That one hurt" << endl;
-			cout << "Your health has been dropped to: " << globalPlayerHeath << endl;
-		}
-		if (globalNumberofSilentKilledZombies == 2) break;
-	}
-	cout << "You have killed " << globalNumberofSilentKilledZombies << " zombies silently." << endl;
-	if (globalNumberofSilentKilledZombies >= 2) {
-		cout << "You have completed the killing zombies silently puzzle.";
-		completedPuzzles++;
-		cout << "You have completed " << completedPuzzles << " of 5" << endl;
-	}
-	sleep(4);
-	goToNextDay();
-	sleep(1);
-	clrScreen();
-	main();
-}
-
 void foodCourt() {
 	clrScreen();
 	cout << "As you arrive to the food court you begin to hear alot of commotion" << endl;
@@ -398,6 +287,117 @@ void foodCourt() {
 
 	}
 
+}
+
+void clothingStore() {
+	cout << "You are in the clothing store." << endl;
+	sleep(1);
+	clrScreen();
+	if (randomNumberGenerator() > 5) {
+		cout << "You have found 5 bandages. Would you like to take them?" << '\n';
+		cout << "1 - Yes" << '\n';
+		cout << "2 - No" << '\n';
+		cin >> selectedOption;
+		if (!cin || selectedOption > 2 || selectedOption < 1) die();
+		if (selectedOption == 1) {
+			globalNumberofBandages += 5;
+			cout << "You now have " << globalNumberofBandages << " bandages" << '\n';
+			sleep(1);
+			if (rollOfDice > 5) {
+				cout << "Would you like to go to the medical office or the food court?" << '\n';
+				cout << "1 - Medical Office" << '\n';
+				cout << "2 - Food Court" << '\n';
+				cin >> selectedOption;
+				if (!cin || selectedOption > 2  || selectedOption < 1) die();
+				if (selectedOption == 1) {
+					medicalOffice();
+					sleep(1);
+				} else {
+					foodCourt();
+					sleep(1);
+				}
+			}
+		} else {
+			cout << "You are stupid for not taking the help thus you die. #NaturalSelection" << '\n';
+			haveBeenKilled();
+		}
+	} else {
+		cout << "The store has already been raided. You should comeback another time to check for any goods." << '\n';
+		sleep(1);
+	}
+	goToNextDay();
+	main();
+}
+
+void gunStore() {
+	cout << "You close up onto the gun store and peer through one of the glas display windows you see a few zombies already inside." << endl;
+	cout << "You realize that there is only two options for you to do." << endl;
+	cout << "You only have " << globalNumberofBullets << " bullets" << endl;
+	cout << "1 - Take out your gun and shoot them." << endl;
+	cout << "2 - take them out quietly one by one." << endl;
+	cin >> selectedOption;
+	if (!cin || selectedOption > 2 || selectedOption < 1) die();
+
+	if (selectedOption == 1) {
+		killWithGun();
+	} else {
+		killSilently();
+	}
+
+}
+
+void killWithGun() {
+	if (globalNumberofBullets == 0) {
+		cout << "You have been killed by the zombies due to not having bullets." << endl;
+		haveBeenKilled();
+	} else if (globalNumberofBullets != 0) {
+		for (size_t i = 0; i < globalNumberofBullets; i++) {
+			cout << "Shooting zombie..." << endl;
+			sleep(1);
+			if (randomNumberGenerator() > 4) {
+				globalNumberofGunKilledZombies++;
+			} else {
+				cout << "You missed try again!" << endl;
+			}
+			if (globalNumberofGunKilledZombies == 5) break;
+		}
+		cout << "You have killed " << globalNumberofGunKilledZombies << " zombies." << endl;
+		if (globalNumberofGunKilledZombies >= 5) {
+			cout << "You have completed the killing zombies by gun puzzle";
+			completedPuzzles++;
+		}
+		sleep(4);
+		goToNextDay();
+		sleep(1);
+		clrScreen();
+		main();
+	}
+}
+
+void killSilently() {
+	for (size_t i = 0; i < 10; i++) {
+		cout << "You are attacking a zombie..." << endl;
+		sleep(1);
+		if (randomNumberGenerator() > 3) {
+			globalNumberofSilentKilledZombies++;
+		} else {
+			globalPlayerHeath = globalPlayerHeath * 0.95;
+			cout << "Ouch!!! That one hurt" << endl;
+			cout << "Your health has been dropped to: " << globalPlayerHeath << endl;
+		}
+		if (globalNumberofSilentKilledZombies == 2) break;
+	}
+	cout << "You have killed " << globalNumberofSilentKilledZombies << " zombies silently." << endl;
+	if (globalNumberofSilentKilledZombies >= 2) {
+		cout << "You have completed the killing zombies silently puzzle.";
+		completedPuzzles++;
+		cout << "You have completed " << completedPuzzles << " of 5" << endl;
+	}
+	sleep(4);
+	goToNextDay();
+	sleep(1);
+	clrScreen();
+	main();
 }
 
 int main() {
