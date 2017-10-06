@@ -82,6 +82,11 @@ void rollDice(int lo, int hi) {
 	clrScreen();
 }
 
+void incorrectPuzzleAnswer() {
+	cout << "You suck. You can't get into the medic room yet. Please reroll the dice." << '\n';
+	rollDice(1, 10);
+}
+
 int randomNumberGenerator() {
 	int n = 10 - 1 + 1;
 	int i = rand() % n;
@@ -450,11 +455,6 @@ void winnerChickenDinner() {
 	} else {
 		exit(0);
 	}
-}
-
-void incorrectPuzzleAnswer() {
-	cout << "You suck. You can't get into the medic room yet. Please reroll the dice." << '\n';
-	rollDice(1, 10);
 }
 
 void day1BullShit() {
