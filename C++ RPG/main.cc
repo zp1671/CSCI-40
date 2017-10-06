@@ -88,6 +88,7 @@ void medicalOffice() {
 	sleep(1);
 	clrScreen();
 	if (isMedicOfficeOpen == false) {
+		cout << "You are in the medical office." << endl;
 		cout << "You move toward the door and open it." << endl;
 		cout << "As the door creaks open the light from the halway shows the destruction within the room." << endl;
 		cout << "Broken chairs along the floor, the desk flipped on the side with bullet holes around the outside, and floor matresses covered in blood." << endl;
