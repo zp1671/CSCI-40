@@ -151,6 +151,47 @@ void medicalOffice() {
 
 }
 
+int main() {
+
+	while (globalPlayerHeath > 0) {
+		if (completedPuzzles == 5) {
+			winnerChickenDinner();
+		}
+
+		if (amountOfRolls <= 5) {
+			dayCnt++;
+		}
+
+		if (dayCnt == 1) {
+			day1BullShit();
+		} else {
+			clrScreen();
+			multiDay(dayCnt);
+		}
+	}
+
+}
+
+void haveBeenKilled() {
+	cout << "You have died" << endl << endl;
+	cout << "----------------------------------------------" << endl;
+	cout << "Number of puzzles completed = " << numberOfPuzzlesCompleted;
+
+	cout << endl << endl;
+	cout << "Thank you for playing " << globalPlayerName << endl;
+	cout << "Would you like to play again?" << endl;
+	cout << "1 - Play again" << endl;
+	cout << "2 - Exit" << endl;
+
+	cin >> selectedOption;
+
+	if (selectedOption == 1) {
+		main();
+	} else {
+		exit(0);
+	}
+}
+
 void foodCourt() {
 	clrScreen();
 	cout << "As you arrive to the food court you begin to hear alot of commotion" << endl;
@@ -398,47 +439,6 @@ void killSilently() {
 	sleep(1);
 	clrScreen();
 	main();
-}
-
-int main() {
-
-	while (globalPlayerHeath > 0) {
-		if (completedPuzzles == 5) {
-			winnerChickenDinner();
-		}
-
-		if (amountOfRolls <= 5) {
-			dayCnt++;
-		}
-
-		if (dayCnt == 1) {
-			day1BullShit();
-		} else {
-			clrScreen();
-			multiDay(dayCnt);
-		}
-	}
-
-}
-
-void haveBeenKilled() {
-	cout << "You have died" << endl << endl;
-	cout << "----------------------------------------------" << endl;
-	cout << "Number of puzzles completed = " << numberOfPuzzlesCompleted;
-
-	cout << endl << endl;
-	cout << "Thank you for playing " << globalPlayerName << endl;
-	cout << "Would you like to play again?" << endl;
-	cout << "1 - Play again" << endl;
-	cout << "2 - Exit" << endl;
-
-	cin >> selectedOption;
-
-	if (selectedOption == 1) {
-		main();
-	} else {
-		exit(0);
-	}
 }
 
 void winnerChickenDinner() {
