@@ -156,11 +156,19 @@ void winnerChickenDinner() {
 	cout << "Congradulations you unworthy sack of shit. You have beat the game." << '\n';
 	cout << "You have completed all 5 puzzles" << '\n';
 	cout << "Thank you for playing" << globalPlayerName << '\n';
-	cout << "Would you like to play again?" << '\n';
-	cout << "1 - Yes" << '\n';
-	cout << "2 - No" << '\n';
+	exit(0);
+}
+
+void haveBeenKilled() {
+	cout << "You have died" << endl << endl;
+	cout << "----------------------------------------------" << endl;
+	cout << "Number of puzzles completed = " << numberOfPuzzlesCompleted;
+
+	cout << endl << endl;
+	cout << "Thank you for playing " << globalPlayerName << endl;
+
 	cin >> selectedOption;
-	if (!cin || selectedOption > 2 || selectedOption < 1) die();
+
 	exit(0);
 }
 
@@ -559,25 +567,4 @@ int main() {
 	}
 
 }
-
-void haveBeenKilled() {
-	cout << "You have died" << endl << endl;
-	cout << "----------------------------------------------" << endl;
-	cout << "Number of puzzles completed = " << numberOfPuzzlesCompleted;
-
-	cout << endl << endl;
-	cout << "Thank you for playing " << globalPlayerName << endl;
-	cout << "Would you like to play again?" << endl;
-	cout << "1 - Play again" << endl;
-	cout << "2 - Exit" << endl;
-
-	cin >> selectedOption;
-
-	if (selectedOption == 1) {
-		main();
-	} else {
-		exit(0);
-	}
-}
-
 
