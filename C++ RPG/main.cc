@@ -164,173 +164,6 @@ void winnerChickenDinner() {
 	exit(0);
 }
 
-void day1BullShit() {
-	char enter;
-	clrScreen();
-
-	//Title
-	cout <<  "Hi, welcome to the SURVIVING ALONE." << endl;
-	cout << "To start the game please prese [ENTER] ";
-	cin.get(enter);
-	clrScreen();
-	sleep(1);
-
-	cout <<  "My name is Iris and I will be your AI companion throughout this journey" << endl;
-	cout <<  "Our story starts in the year 2100." << endl;
-	cout <<  "During this time a toxic and viral virus has spread throughtout the population, turing the people into mad and zombie-like creatures." << endl;
-	cout <<  "This virus turned the world into a wasteland." << endl << endl;
-
-	//Player Name
-	cout << "For us to get a better sense of who you are pleae enter your name: ";
-	getline(cin, globalPlayerName);
-	if (!cin) die();
-	clrScreen();
-
-	cout << "You will follow the story of " + globalPlayerName + " in their daily survival within this post-apocalyptic crisis" << endl;
-	clrScreen();
-
-	cout << "Day " << dayCnt << endl;
-	cout << "Setting: Los Angles" << endl;
-	cout << "You are driving down the highway to the abandon city of Los Angles. You have been out on the road for days." << endl;
-	cout << "You look at your supplies and see that you have very little left." << endl;
-	cout << "A few cans of food, 3 bandages, and 1 gallon of water" << endl;
-	cout << "You were also on your last gallon of gas" << endl;
-	cout << "As you drive in into the abandon streets of Los Angles, you notice a mall with loads of cars within the parking lot" << endl;
-	cout << "You turn into the parking lot to refill on all of your supplies" << endl << endl;
-	cout << "1) Siphon the Cars for gas" << endl;
-	cout << "2) Go straight into the mall to look for the other supplies there" << endl;
-	cout << "However you first need to choose which supplies you like to collect first: ";
-	cin >> selectedOption;
-	if (!cin || selectedOption < 1 || selectedOption > 2) die();
-
-	if (selectedOption == 1) {
-		clrScreen();
-		cout << "You begin to siphon out the gas from the car, until you begin to hear grunts from the road you came from." << endl;
-		cout << "You look in the direction and begin to panic. There across the road you see a bunch of zombies pop out between the alleys of the buildings." << endl;
-		cout << "You frantically start to bring back the tube within the gas tank of the car and began carfully walking to your car." << endl;
-		cout << "However, as soon as you start moving the zombies spot you. To far from the safety of you own car. you began running in the direction of the mall." << endl;
-		cout << endl;
-		sleep(18);
-		cout << "While running you begin to look back to see how far the zombies are to reaching you and to your horror it alot worse." << endl;
-		cout << "Emerging from the shadows of the alleys, more and more zombies came. You did not step upon a group of zombies but a hoard instead." << endl;
-		cout << "You begin to run faster and faster until you reached the entrance of the mall. As you quickly walk in you, wihtout paying much attension, you foot it triped by the uneven ground below." << endl;
-		cout << "You fall down the escaltor stairs and black out." << endl;
-		cout << endl;
-		sleep(25);
-		clrScreen();
-		cout << "You wake up hours later on the floor of the mall." << endl;
-		cout << "Your as you begin to move he hear loud grunting sounds all around you." << endl;
-		cout << "Sacred, you open your eyes to see about 5-6 zombies walking all around you." << endl;
-		cout << "Out the corner of your eye you spot two store which sutible places to hide in" << endl;
-
-		cout << "1 - The Clothing Store" << endl;
-		cout << "2 - The Medical Office" << endl;
-		cin >> currentStore;
-
-		if (!cin || currentStore > 2 || currentStore < 1) {
-			die();
-		}
-
-		if (currentStore == 1) {
-			clrScreen();
-			//Create a function that creates a random experience everytime you enter the clothing store.
-			clothingStore();
-			amountOfRolls = 5;
-		} else {
-			clrScreen();
-			//Create a function that creates a random experience everytime you enter the medical office.
-			medicalOffice();
-			amountOfRolls = 5;
-		}
-
-	} else {
-
-		clrScreen();
-		cout << "You begin to walk to the mall" << endl;
-		cout << "As you approach the doors you check the inside first to make sure that no on else is around." << endl;
-		cout << "Seeing no one, you enter in the mall and see alot of stores. The stores varied from a gun shop to the food court." << endl;
-		cout << "However you are not able to get a good glance at any of them, because in the reflection of the mall map glass you begin to see a hoard of zombies emerge form the shadows of the alley ways" << endl;
-		cout << "To far from the car to get out of there you are force to choose between the two store closes that peak you attetion the first time you came in." << endl;
-		cout << "1 - The Gun Store" << endl;
-		cout << "2 - The Food Court" << endl;
-
-		cin >> selectedOption;
-		if (!cin || selectedOption < 1 || selectedOption > 2) die();
-
-		if (selectedOption == 1) {
-			sleep(4);
-			gunStore();
-		} else {
-			sleep(4);
-			foodCourt();
-		}
-	}
-}
-
-void multiDay(int dayCounter) {
-	clrScreen();
-	cout << "Day " <<  dayCounter << endl;
-	if (currentStore == 1) {
-		cout << "You are in the Clothing Store." << endl;
-		sleep(4);
-		clothingStore();
-	} else if (currentStore == 2) {
-		cout << "You are in the Medical Office." << endl;
-		sleep(4);
-		medicalOffice();
-	} else if (currentStore == 3) {
-		cout << "You are in the Gun Shop." << endl;
-		sleep(4);
-		gunStore();
-	} else if (currentStore == 4) {
-		cout << "You are in the Food Court." << endl;
-		sleep(4);
-		foodCourt();
-	}
-
-}
-
-int main() {
-
-	while (globalPlayerHeath > 0) {
-		if (completedPuzzles == 5) {
-			winnerChickenDinner();
-		}
-
-		if (amountOfRolls <= 5) {
-			dayCnt++;
-		}
-
-		if (dayCnt == 1) {
-			day1BullShit();
-		} else {
-			clrScreen();
-			multiDay(dayCnt);
-		}
-	}
-
-}
-
-void haveBeenKilled() {
-	cout << "You have died" << endl << endl;
-	cout << "----------------------------------------------" << endl;
-	cout << "Number of puzzles completed = " << numberOfPuzzlesCompleted;
-
-	cout << endl << endl;
-	cout << "Thank you for playing " << globalPlayerName << endl;
-	cout << "Would you like to play again?" << endl;
-	cout << "1 - Play again" << endl;
-	cout << "2 - Exit" << endl;
-
-	cin >> selectedOption;
-
-	if (selectedOption == 1) {
-		main();
-	} else {
-		exit(0);
-	}
-}
-
 void foodCourt() {
 	clrScreen();
 	cout << "As you arrive to the food court you begin to hear alot of commotion" << endl;
@@ -579,4 +412,172 @@ void killSilently() {
 	clrScreen();
 	main();
 }
+
+void day1BullShit() {
+	char enter;
+	clrScreen();
+
+	//Title
+	cout <<  "Hi, welcome to the SURVIVING ALONE." << endl;
+	cout << "To start the game please prese [ENTER] ";
+	cin.get(enter);
+	clrScreen();
+	sleep(1);
+
+	cout <<  "My name is Iris and I will be your AI companion throughout this journey" << endl;
+	cout <<  "Our story starts in the year 2100." << endl;
+	cout <<  "During this time a toxic and viral virus has spread throughtout the population, turing the people into mad and zombie-like creatures." << endl;
+	cout <<  "This virus turned the world into a wasteland." << endl << endl;
+
+	//Player Name
+	cout << "For us to get a better sense of who you are pleae enter your name: ";
+	getline(cin, globalPlayerName);
+	if (!cin) die();
+	clrScreen();
+
+	cout << "You will follow the story of " + globalPlayerName + " in their daily survival within this post-apocalyptic crisis" << endl;
+	clrScreen();
+
+	cout << "Day " << dayCnt << endl;
+	cout << "Setting: Los Angles" << endl;
+	cout << "You are driving down the highway to the abandon city of Los Angles. You have been out on the road for days." << endl;
+	cout << "You look at your supplies and see that you have very little left." << endl;
+	cout << "A few cans of food, 3 bandages, and 1 gallon of water" << endl;
+	cout << "You were also on your last gallon of gas" << endl;
+	cout << "As you drive in into the abandon streets of Los Angles, you notice a mall with loads of cars within the parking lot" << endl;
+	cout << "You turn into the parking lot to refill on all of your supplies" << endl << endl;
+	cout << "1) Siphon the Cars for gas" << endl;
+	cout << "2) Go straight into the mall to look for the other supplies there" << endl;
+	cout << "However you first need to choose which supplies you like to collect first: ";
+	cin >> selectedOption;
+	if (!cin || selectedOption < 1 || selectedOption > 2) die();
+
+	if (selectedOption == 1) {
+		clrScreen();
+		cout << "You begin to siphon out the gas from the car, until you begin to hear grunts from the road you came from." << endl;
+		cout << "You look in the direction and begin to panic. There across the road you see a bunch of zombies pop out between the alleys of the buildings." << endl;
+		cout << "You frantically start to bring back the tube within the gas tank of the car and began carfully walking to your car." << endl;
+		cout << "However, as soon as you start moving the zombies spot you. To far from the safety of you own car. you began running in the direction of the mall." << endl;
+		cout << endl;
+		sleep(18);
+		cout << "While running you begin to look back to see how far the zombies are to reaching you and to your horror it alot worse." << endl;
+		cout << "Emerging from the shadows of the alleys, more and more zombies came. You did not step upon a group of zombies but a hoard instead." << endl;
+		cout << "You begin to run faster and faster until you reached the entrance of the mall. As you quickly walk in you, wihtout paying much attension, you foot it triped by the uneven ground below." << endl;
+		cout << "You fall down the escaltor stairs and black out." << endl;
+		cout << endl;
+		sleep(25);
+		clrScreen();
+		cout << "You wake up hours later on the floor of the mall." << endl;
+		cout << "Your as you begin to move he hear loud grunting sounds all around you." << endl;
+		cout << "Sacred, you open your eyes to see about 5-6 zombies walking all around you." << endl;
+		cout << "Out the corner of your eye you spot two store which sutible places to hide in" << endl;
+
+		cout << "1 - The Clothing Store" << endl;
+		cout << "2 - The Medical Office" << endl;
+		cin >> currentStore;
+
+		if (!cin || currentStore > 2 || currentStore < 1) {
+			die();
+		}
+
+		if (currentStore == 1) {
+			clrScreen();
+			//Create a function that creates a random experience everytime you enter the clothing store.
+			clothingStore();
+			amountOfRolls = 5;
+		} else {
+			clrScreen();
+			//Create a function that creates a random experience everytime you enter the medical office.
+			medicalOffice();
+			amountOfRolls = 5;
+		}
+
+	} else {
+
+		clrScreen();
+		cout << "You begin to walk to the mall" << endl;
+		cout << "As you approach the doors you check the inside first to make sure that no on else is around." << endl;
+		cout << "Seeing no one, you enter in the mall and see alot of stores. The stores varied from a gun shop to the food court." << endl;
+		cout << "However you are not able to get a good glance at any of them, because in the reflection of the mall map glass you begin to see a hoard of zombies emerge form the shadows of the alley ways" << endl;
+		cout << "To far from the car to get out of there you are force to choose between the two store closes that peak you attetion the first time you came in." << endl;
+		cout << "1 - The Gun Store" << endl;
+		cout << "2 - The Food Court" << endl;
+
+		cin >> selectedOption;
+		if (!cin || selectedOption < 1 || selectedOption > 2) die();
+
+		if (selectedOption == 1) {
+			sleep(4);
+			gunStore();
+		} else {
+			sleep(4);
+			foodCourt();
+		}
+	}
+}
+
+void multiDay(int dayCounter) {
+	clrScreen();
+	cout << "Day " <<  dayCounter << endl;
+	if (currentStore == 1) {
+		cout << "You are in the Clothing Store." << endl;
+		sleep(4);
+		clothingStore();
+	} else if (currentStore == 2) {
+		cout << "You are in the Medical Office." << endl;
+		sleep(4);
+		medicalOffice();
+	} else if (currentStore == 3) {
+		cout << "You are in the Gun Shop." << endl;
+		sleep(4);
+		gunStore();
+	} else if (currentStore == 4) {
+		cout << "You are in the Food Court." << endl;
+		sleep(4);
+		foodCourt();
+	}
+
+}
+
+int main() {
+
+	while (globalPlayerHeath > 0) {
+		if (completedPuzzles == 5) {
+			winnerChickenDinner();
+		}
+
+		if (amountOfRolls <= 5) {
+			dayCnt++;
+		}
+
+		if (dayCnt == 1) {
+			day1BullShit();
+		} else {
+			clrScreen();
+			multiDay(dayCnt);
+		}
+	}
+
+}
+
+void haveBeenKilled() {
+	cout << "You have died" << endl << endl;
+	cout << "----------------------------------------------" << endl;
+	cout << "Number of puzzles completed = " << numberOfPuzzlesCompleted;
+
+	cout << endl << endl;
+	cout << "Thank you for playing " << globalPlayerName << endl;
+	cout << "Would you like to play again?" << endl;
+	cout << "1 - Play again" << endl;
+	cout << "2 - Exit" << endl;
+
+	cin >> selectedOption;
+
+	if (selectedOption == 1) {
+		main();
+	} else {
+		exit(0);
+	}
+}
+
 
