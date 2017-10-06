@@ -151,6 +151,22 @@ void medicalOffice() {
 
 }
 
+void winnerChickenDinner() {
+	cout << "Congradulations you unworthy sack of shit. You have beat the game." << '\n';
+	cout << "You have completed all 5 puzzles" << '\n';
+	cout << "Thank you for playing" << globalPlayerName << '\n';
+	cout << "Would you like to play again?" << '\n';
+	cout << "1 - Yes" << '\n';
+	cout << "2 - No" << '\n';
+	cin >> selectedOption;
+	if (!cin || selectedOption > 2 || selectedOption < 1) die();
+	if (selectedOption == 1) {
+		main();
+	} else {
+		exit(0);
+	}
+}
+
 int main() {
 
 	while (globalPlayerHeath > 0) {
@@ -439,22 +455,6 @@ void killSilently() {
 	sleep(1);
 	clrScreen();
 	main();
-}
-
-void winnerChickenDinner() {
-	cout << "Congradulations you unworthy sack of shit. You have beat the game." << '\n';
-	cout << "You have completed all 5 puzzles" << '\n';
-	cout << "Thank you for playing" << globalPlayerName << '\n';
-	cout << "Would you like to play again?" << '\n';
-	cout << "1 - Yes" << '\n';
-	cout << "2 - No" << '\n';
-	cin >> selectedOption;
-	if (!cin || selectedOption > 2 || selectedOption < 1) die();
-	if (selectedOption == 1) {
-		main();
-	} else {
-		exit(0);
-	}
 }
 
 void day1BullShit() {
