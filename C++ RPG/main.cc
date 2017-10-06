@@ -45,6 +45,10 @@ int ans1 = 0;
 int ans2 = 0;
 int ans3 = 0;
 
+void clrScreen() {
+	cout << "\033[2J\033[1;1H";
+}
+
 void die() {
 	cout << "You're an asshole. Stop." << endl;
 	exit(0);
@@ -61,10 +65,6 @@ void goToNextDay() {
 		sleep(1);
 		clrScreen();
 	}
-}
-
-void clrScreen() {
-	cout << "\033[2J\033[1;1H";
 }
 
 void rollDice(int lo, int hi) {
@@ -320,7 +320,7 @@ void foodCourt() {
 			cout << "'Here', you say as you pass the remainder of your food supplies over." << endl;
 			cout << "'Nice doing business with you', said the man, and here is your food for your family." << endl;
 			cout << "The man give them half of what you gave him" << endl;
-			sleep(10)
+			sleep(10);
 			cout << "'Well I'll be on my way.', said the man as he walked out of the room." << endl;
 			cout << "'Thank you', said the Father, 'I don't know what would of happened without you.'" << endl;
 			cout << "'Here, I know it's much but it should help you',said the mother" << endl;
