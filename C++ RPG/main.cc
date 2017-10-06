@@ -82,7 +82,7 @@ void rollDice(int lo, int hi) {
 	clrScreen();
 }
 
-int randomNumberGenerator(int lo, int hi) {
+int randomNumberGenerator() {
 	int n = 10 - 1 + 1;
 	int i = rand() % n;
 	if (i < 0) i = -i;
