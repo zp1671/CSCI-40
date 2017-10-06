@@ -55,19 +55,6 @@ void die() {
 	exit(0);
 }
 
-void goToNextDay() {
-	sleep(1);
-	clrScreen();
-	amountOfRolls++;
-	cout << "You have worked hard for today time to go to sleep and get some rest." << endl;
-	clrScreen();
-	for (int i = 0; i < 2; i++) {
-		cout << "ZZZZZZZZZZZZZZZZ......" << endl;
-		sleep(1);
-		clrScreen();
-	}
-}
-
 void rollDice(int lo, int hi) {
 	amountOfRolls++;
 	cout << "Rolling the dice..." << '\n';
@@ -254,7 +241,6 @@ void foodCourt() {
 				globalPiecesofFood += 10;
 				completedPuzzles++;
 				goToNextDay();
-				main();
 			}
 
 		} else if (selectedOption == 3) {
@@ -303,7 +289,6 @@ void foodCourt() {
 			completedPuzzles++;
 			sleep(15);
 			goToNextDay();
-			main();
 		}
 
 	}
@@ -567,4 +552,19 @@ int main() {
 	}
 
 }
+
+void goToNextDay() {
+	sleep(1);
+	clrScreen();
+	amountOfRolls++;
+	cout << "You have worked hard for today time to go to sleep and get some rest." << endl;
+	clrScreen();
+	for (int i = 0; i < 2; i++) {
+		cout << "ZZZZZZZZZZZZZZZZ......" << endl;
+		sleep(1);
+		clrScreen();
+	}
+	main();
+}
+
 
