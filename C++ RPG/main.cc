@@ -240,7 +240,16 @@ void foodCourt() {
 				cout << "You gained 10 pieces of food." << endl;
 				globalPiecesofFood += 10;
 				completedPuzzles++;
-				goToNextDay();
+				sleep(1);
+				clrScreen();
+				amountOfRolls++;
+				cout << "You have worked hard for today time to go to sleep and get some rest." << endl;
+				clrScreen();
+				for (int i = 0; i < 2; i++) {
+					cout << "ZZZZZZZZZZZZZZZZ......" << endl;
+					sleep(1);
+					clrScreen();
+				}
 			}
 
 		} else if (selectedOption == 3) {
@@ -288,7 +297,16 @@ void foodCourt() {
 			globalPiecesofFood += 10;
 			completedPuzzles++;
 			sleep(15);
-			goToNextDay();
+			sleep(1);
+			clrScreen();
+			amountOfRolls++;
+			cout << "You have worked hard for today time to go to sleep and get some rest." << endl;
+			clrScreen();
+			for (int i = 0; i < 2; i++) {
+				cout << "ZZZZZZZZZZZZZZZZ......" << endl;
+				sleep(1);
+				clrScreen();
+			}
 		}
 
 	}
@@ -331,8 +349,37 @@ void clothingStore() {
 		cout << "The store has already been raided. You should comeback another time to check for any goods." << '\n';
 		sleep(1);
 	}
-	goToNextDay();
-	main();
+	sleep(1);
+	clrScreen();
+	amountOfRolls++;
+	cout << "You have worked hard for today time to go to sleep and get some rest." << endl;
+	clrScreen();
+	for (int i = 0; i < 2; i++) {
+		cout << "ZZZZZZZZZZZZZZZZ......" << endl;
+		sleep(1);
+		clrScreen();
+	}
+}
+
+int main() {
+
+	while (globalPlayerHeath > 0) {
+		if (completedPuzzles == 5) {
+			winnerChickenDinner();
+		}
+
+		if (amountOfRolls <= 5) {
+			dayCnt++;
+		}
+
+		if (dayCnt == 1) {
+			day1BullShit();
+		} else {
+			clrScreen();
+			multiDay(dayCnt);
+		}
+	}
+
 }
 
 void gunStore() {
@@ -345,13 +392,77 @@ void gunStore() {
 	if (!cin || selectedOption > 2 || selectedOption < 1) die();
 
 	if (selectedOption == 1) {
-		killWithGun();
+		if (globalNumberofBullets == 0) {
+		cout << "You have been killed by the zombies due to not having bullets." << endl;
+		haveBeenKilled();
+	} else if (globalNumberofBullets != 0) {
+		for (size_t i = 0; i < globalNumberofBullets; i++) {
+			cout << "Shooting zombie..." << endl;
+			sleep(1);
+			if (randomNumberGenerator() > 4) {
+				globalNumberofGunKilledZombies++;
+			} else {
+				cout << "You missed try again!" << endl;
+			}
+			if (globalNumberofGunKilledZombies == 5) break;
+		}
+		cout << "You have killed " << globalNumberofGunKilledZombies << " zombies." << endl;
+		if (globalNumberofGunKilledZombies >= 5) {
+			cout << "You have completed the killing zombies by gun puzzle";
+			completedPuzzles++;
+		}
+		sleep(4);
+		sleep(1);
+		clrScreen();
+		amountOfRolls++;
+		cout << "You have worked hard for today time to go to sleep and get some rest." << endl;
+		clrScreen();
+		for (int i = 0; i < 2; i++) {
+			cout << "ZZZZZZZZZZZZZZZZ......" << endl;
+			sleep(1);
+			clrScreen();
+		}
+		sleep(1);
+		clrScreen();
+		main();
+	}
 	} else {
-		killSilently();
+		for (size_t i = 0; i < 10; i++) {
+		cout << "You are attacking a zombie..." << endl;
+		sleep(1);
+		if (randomNumberGenerator() > 3) {
+			globalNumberofSilentKilledZombies++;
+		} else {
+			globalPlayerHeath = globalPlayerHeath * 0.95;
+			cout << "Ouch!!! That one hurt" << endl;
+			cout << "Your health has been dropped to: " << globalPlayerHeath << endl;
+		}
+		if (globalNumberofSilentKilledZombies == 2) break;
+	}
+	cout << "You have killed " << globalNumberofSilentKilledZombies << " zombies silently." << endl;
+	if (globalNumberofSilentKilledZombies >= 2) {
+		cout << "You have completed the killing zombies silently puzzle.";
+		completedPuzzles++;
+		cout << "You have completed " << completedPuzzles << " of 5" << endl;
+	}
+	sleep(4);
+	sleep(1);
+	clrScreen();
+	amountOfRolls++;
+	cout << "You have worked hard for today time to go to sleep and get some rest." << endl;
+	clrScreen();
+	for (int i = 0; i < 2; i++) {
+		cout << "ZZZZZZZZZZZZZZZZ......" << endl;
+		sleep(1);
+		clrScreen();
+	}
+	sleep(1);
+	clrScreen();
+	main();
 	}
 
 }
-
+/*
 void killWithGun() {
 	if (globalNumberofBullets == 0) {
 		cout << "You have been killed by the zombies due to not having bullets." << endl;
@@ -373,12 +484,22 @@ void killWithGun() {
 			completedPuzzles++;
 		}
 		sleep(4);
-		goToNextDay();
+		sleep(1);
+		clrScreen();
+		amountOfRolls++;
+		cout << "You have worked hard for today time to go to sleep and get some rest." << endl;
+		clrScreen();
+		for (int i = 0; i < 2; i++) {
+			cout << "ZZZZZZZZZZZZZZZZ......" << endl;
+			sleep(1);
+			clrScreen();
+		}
 		sleep(1);
 		clrScreen();
 		main();
 	}
 }
+
 
 void killSilently() {
 	for (size_t i = 0; i < 10; i++) {
@@ -400,11 +521,21 @@ void killSilently() {
 		cout << "You have completed " << completedPuzzles << " of 5" << endl;
 	}
 	sleep(4);
-	goToNextDay();
+	sleep(1);
+	clrScreen();
+	amountOfRolls++;
+	cout << "You have worked hard for today time to go to sleep and get some rest." << endl;
+	clrScreen();
+	for (int i = 0; i < 2; i++) {
+		cout << "ZZZZZZZZZZZZZZZZ......" << endl;
+		sleep(1);
+		clrScreen();
+	}
 	sleep(1);
 	clrScreen();
 	main();
 }
+*/
 
 void day1BullShit() {
 	char enter;
@@ -532,26 +663,7 @@ void multiDay(int dayCounter) {
 
 }
 
-int main() {
 
-	while (globalPlayerHeath > 0) {
-		if (completedPuzzles == 5) {
-			winnerChickenDinner();
-		}
-
-		if (amountOfRolls <= 5) {
-			dayCnt++;
-		}
-
-		if (dayCnt == 1) {
-			day1BullShit();
-		} else {
-			clrScreen();
-			multiDay(dayCnt);
-		}
-	}
-
-}
 
 void goToNextDay() {
 	sleep(1);
