@@ -89,31 +89,40 @@ int randomNumberGenerator(int lo, int hi) {
 	return 1 + i;
 }
 
+void haveBeenKilled() {
+	cout << "You have died" << endl << endl;
+	cout << "----------------------------------------------" << endl;
+	cout << "Number of puzzles completed = " << numberOfPuzzlesCompleted;
 
-int main() {
+	cout << endl << endl;
+	cout << "Thank you for playing " << globalPlayerName << endl;
+	cout << "Would you like to play again?" << endl;
+	cout << "1 - Play again" << endl;
+	cout << "2 - Exit" << endl;
 
-	while (globalPlayerHeath > 0) {
-		if (completedPuzzles == 5) {
-			winnerChickenDinner();
-		}
+	cin >> selectedOption;
 
-		if (amountOfRolls <= 5) {
-			dayCnt++;
-		}
-
-		if (dayCnt == 1) {
-			day1BullShit();
-		} else {
-			clrScreen();
-			multiDay(dayCnt);
-		}
+	if (selectedOption == 1) {
+		main();
+	} else {
+		exit(0);
 	}
-
 }
 
-void incorrectPuzzleAnswer() {
-	cout << "You suck. You can't get into the medic room yet. Please reroll the dice." << '\n';
-	rollDice(1, 10);
+void winnerChickenDinner() {
+	cout << "Congradulations you unworthy sack of shit. You have beat the game." << '\n';
+	cout << "You have completed all 5 puzzles" << '\n';
+	cout << "Thank you for playing" << globalPlayerName << '\n';
+	cout << "Would you like to play again?" << '\n';
+	cout << "1 - Yes" << '\n';
+	cout << "2 - No" << '\n';
+	cin >> selectedOption;
+	if (!cin || selectedOption > 2 || selectedOption < 1) die();
+	if (selectedOption == 1) {
+		main();
+	} else {
+		exit(0);
+	}
 }
 
 //Sets up the different locations.
@@ -422,6 +431,32 @@ void foodCourt() {
 
 }
 
+int main() {
+
+	while (globalPlayerHeath > 0) {
+		if (completedPuzzles == 5) {
+			winnerChickenDinner();
+		}
+
+		if (amountOfRolls <= 5) {
+			dayCnt++;
+		}
+
+		if (dayCnt == 1) {
+			day1BullShit();
+		} else {
+			clrScreen();
+			multiDay(dayCnt);
+		}
+	}
+
+}
+
+void incorrectPuzzleAnswer() {
+	cout << "You suck. You can't get into the medic room yet. Please reroll the dice." << '\n';
+	rollDice(1, 10);
+}
+
 void day1BullShit() {
 	char enter;
 	clrScreen();
@@ -498,7 +533,7 @@ void day1BullShit() {
 			clrScreen();
 			//Create a function that creates a random experience everytime you enter the medical office.
 			medicalOffice();
-			amountOfRolls = 5
+			amountOfRolls = 5;
 		}
 
 	} else {
@@ -546,40 +581,4 @@ void multiDay(int dayCounter) {
 		foodCourt();
 	}
 
-}
-
-void haveBeenKilled() {
-	cout << "You have died" << endl << endl;
-	cout << "----------------------------------------------" << endl;
-	cout << "Number of puzzles completed = " << numberOfPuzzlesCompleted;
-
-	cout << endl << endl;
-	cout << "Thank you for playing " << globalPlayerName << endl;
-	cout << "Would you like to play again?" << endl;
-	cout << "1 - Play again" << endl;
-	cout << "2 - Exit" << endl;
-
-	cin >> selectedOption;
-
-	if (selectedOption == 1) {
-		main();
-	} else {
-		exit(0);
-	}
-}
-
-void winnerChickenDinner() {
-	cout << "Congradulations you unworthy sack of shit. You have beat the game." << '\n';
-	cout << "You have completed all 5 puzzles" << '\n';
-	cout << "Thank you for playing" << globalPlayerName << '\n';
-	cout << "Would you like to play again?" << '\n';
-	cout << "1 - Yes" << '\n';
-	cout << "2 - No" << '\n';
-	cin >> selectedOption;
-	if (!cin || selectedOption > 2 || selectedOption < 1) die();
-	if (selectedOption == 1) {
-		main();
-	} else {
-		exit(0);
-	}
 }
