@@ -242,7 +242,7 @@ void foodCourt() {
 			if (selectedOption == 1) {
 				cout << "You are too nice. He was going to die anyways, so due to natural selection you have died because of stupidity." << endl;
 				haveBeenKilled();
-			} else if (selection == 2) {
+			} else if (selectedOption == 2) {
 				cout << "You look at the man and then down at the food." << endl;
 				cout << "You grab the bag and begin to sprint towards the family's direction" << endl;
 				cout << "'Hey!', he screams, 'Come back here, come back here you thief.'" << endl;
