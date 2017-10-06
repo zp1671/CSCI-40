@@ -90,46 +90,6 @@ int randomNumberGenerator() {
 }
 
 //Sets up the different locations.
-void clothingStore() {
-	cout << "You are in the clothing store." << endl;
-	sleep(1);
-	clrScreen();
-	if (randomNumberGenerator() > 5) {
-		cout << "You have found 5 bandages. Would you like to take them?" << '\n';
-		cout << "1 - Yes" << '\n';
-		cout << "2 - No" << '\n';
-		cin >> selectedOption;
-		if (!cin || selectedOption > 2 || selectedOption < 1) die();
-		if (selectedOption == 1) {
-			globalNumberofBandages += 5;
-			cout << "You now have " << globalNumberofBandages << " bandages" << '\n';
-			sleep(1);
-			if (rollOfDice > 5) {
-				cout << "Would you like to go to the medical office or the food court?" << '\n';
-				cout << "1 - Medical Office" << '\n';
-				cout << "2 - Food Court" << '\n';
-				cin >> selectedOption;
-				if (!cin || selectedOption > 2  || selectedOption < 1) die();
-				if (selectedOption == 1) {
-					medicalOffice();
-					sleep(1);
-				} else {
-					foodCourt();
-					sleep(1);
-				}
-			}
-		} else {
-			cout << "You are stupid for not taking the help thus you die. #NaturalSelection" << '\n';
-			haveBeenKilled();
-		}
-	} else {
-		cout << "The store has already been raided. You should comeback another time to check for any goods." << '\n';
-		sleep(1);
-	}
-	goToNextDay();
-	main();
-}
-
 void medicalOffice() {
 	cout << "You are in the medical office." << endl;
 	sleep(1);
@@ -184,6 +144,46 @@ void medicalOffice() {
 	}
 
 
+}
+
+void clothingStore() {
+	cout << "You are in the clothing store." << endl;
+	sleep(1);
+	clrScreen();
+	if (randomNumberGenerator() > 5) {
+		cout << "You have found 5 bandages. Would you like to take them?" << '\n';
+		cout << "1 - Yes" << '\n';
+		cout << "2 - No" << '\n';
+		cin >> selectedOption;
+		if (!cin || selectedOption > 2 || selectedOption < 1) die();
+		if (selectedOption == 1) {
+			globalNumberofBandages += 5;
+			cout << "You now have " << globalNumberofBandages << " bandages" << '\n';
+			sleep(1);
+			if (rollOfDice > 5) {
+				cout << "Would you like to go to the medical office or the food court?" << '\n';
+				cout << "1 - Medical Office" << '\n';
+				cout << "2 - Food Court" << '\n';
+				cin >> selectedOption;
+				if (!cin || selectedOption > 2  || selectedOption < 1) die();
+				if (selectedOption == 1) {
+					medicalOffice();
+					sleep(1);
+				} else {
+					foodCourt();
+					sleep(1);
+				}
+			}
+		} else {
+			cout << "You are stupid for not taking the help thus you die. #NaturalSelection" << '\n';
+			haveBeenKilled();
+		}
+	} else {
+		cout << "The store has already been raided. You should comeback another time to check for any goods." << '\n';
+		sleep(1);
+	}
+	goToNextDay();
+	main();
 }
 
 void gunStore() {
