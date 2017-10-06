@@ -110,7 +110,7 @@ void foodCourt() {
 			cout << "'Here', you say as you pass the remainder of your food supplies over." << endl;
 			cout << "'Nice doing business with you', said the man, and here is your food for your family." << endl;
 			cout << "The man give them half of what you gave him" << endl;
-			sleep(10);
+			sleep(5);
 			cout << "'Well I'll be on my way.', said the man as he walked out of the room." << endl;
 			cout << "'Thank you', said the Father, 'I don't know what would of happened without you.'" << endl;
 			cout << "'Here, I know it's much but it should help you',said the mother" << endl;
@@ -127,7 +127,7 @@ void foodCourt() {
 			cout << "'How about I give you nothing and you just help these people out'" << endl;
 			cout << "'I see, that your decision', said the man, 'Well then I guess were going to have alot more dummy bodies for the zombies.'" << endl;
 			cout << "He turns to the family and points the gun at them." << endl;
-			sleep(10);
+			sleep(5);
 			cout << "As you begins to pull on the trigger a loud and raspey grunt comes from behind the counter of one of the food court booth." << endl;
 			cout << "A zombie spring out of the booth and attacks the man with the gun." << endl;
 			cout << "While he is attacked the family gets up and starts to run." << endl;
@@ -168,14 +168,14 @@ void foodCourt() {
 			cout << "Finally, the father jumped up onto the man and grabbed the gun." << endl;
 			cout << "Once the fighting started you begin to rush to the scuffle. However as you soon as you gotten closer to the struggle to help, a gun shot echos through the mall." << endl;
 			cout << "Both of the men look at each other, and both of them looked down." << endl;
-			sleep(15);
+			sleep(5);
 			cout << "Around the waist of the father, a circle blood stain started to grow." << endl;
 			cout << "The father stumbled back and fell into his family arms, choking on his last breath." << endl;
 			cout << "The man however, looking at himself, snickered and laughed at the scene." << endl;
 			cout << "He then again pointed the gun back at you." << endl;
 			cout << "'So, as you can see I still got alot of control here', he says proudly" << endl;
 			cout << "'So why don't you just hand over all of your--'" << endl;
-			sleep(15);
+			sleep(5);
 
 			clrScreen();
 			cout << "For a short second the man with the gun paused." << endl;
@@ -186,7 +186,7 @@ void foodCourt() {
 			cout << "With the man with the gun lies dead on the ground, you go over to aid the father." << endl;
 			cout << "'Here let me help you', you say asy you try to grab your medical supplies." << endl;
 			cout << "The father then grabs your hand and shakes his head from side to side." << endl;
-			sleep(15);
+			sleep(5);
 			clrScreen();
 			cout << "'There is no need for that young one save that for those you can save, I am nothing but a old man who is ready to leave.'" << endl;
 			cout << "'Honey, please don't go we need you', said the mom. 'Yeah, Dad please don't go', cried the child." << endl;
@@ -194,7 +194,7 @@ void foodCourt() {
 			cout << "As those words came out so did his final breath." << endl;
 			cout << "You walk over to the other man body and pick up the bag of food." << endl;
 			cout << "You come back over to the crying mother and give it to her." << endl;
-			sleep(15);
+			sleep(5);
 			clrScreen();
 			cout << "As she looks up she grabs the bag and takes out some of the food and hands it back to you." << endl;
 			cout << "'You need this food as much as we do', she said ,'This is our thank you for trying to help us.'" << endl;
@@ -205,7 +205,7 @@ void foodCourt() {
 			cout << "You've aquired 10 pieces of food." << endl;
 			numPiecesofFood += 10;
 			numberOfCompletedPuzzles++;
-			sleep(15);
+			sleep(5);
 			sleep(1);
 			clrScreen();
 			cout << "You have returned to the center of the map." << endl;
@@ -231,7 +231,8 @@ void gunStore() {
 				youHaveDied();
 			} else {
 				if (numofBullets > 3) {
-					for (size_t i = 0; i < numofBullets/4; i++) {
+					int n = numofBullets / 4;
+					for (size_t i = 0; i < n; i++) {
 						cout << "Shooting zombie..." << endl;
 						sleep(1);
 						if (randomNumberGenerator() > 4) {
@@ -250,7 +251,7 @@ void gunStore() {
 						cout << "You have completed " << numberOfCompletedPuzzles << " puzzles of 5" << endl;
 						cout << "You will be returning to the center of the map" << endl;
 						sleep(8);
-						clrScreen(); 
+						clrScreen();
 					}
 
 				} else {
@@ -278,6 +279,7 @@ void gunStore() {
 			clrScreen();
 			cout << "You returned to the center of the map excited." << endl;
 			sleep(1);
+			p
 		} else {
 			cout << "You have returned to the center of the map sad because there were no bullets in the gun shop." << endl;
 			sleep(1);
@@ -291,21 +293,21 @@ void clothingStore() {
 	if (isClothingCompleted == false) {
 		clrScreen();
 		cout << "As you walk through the mall, you notice a clothing store." << endl;
-		cout << "You look down at yoour cloths and notice you neeed an upgrade in order to survive"<<endl;
+		cout << "You look down at yoour cloths and notice you neeed an upgrade in order to survive" << endl;
 		cout << " You take this chance to peruse through the store for cloths that will keep you warm and protective." << endl;
 		cout << "Once at the entrace of the store you notice a ton of bodies on the floor." << endl;
 		cout << "'Things must've not gotten pretty bad', you say." << endl;
-		sleep(8);
+		sleep(5);
 		cout << "As you walk in, before placing your foot down you notice the bodies on the floors moving" << endl;
 		cout << "You peer the whole shop and notice that the zombies were still quite alive." << endl;
 		cout << "A little preoccuped with dead carcass, they haven't notice you yet." << endl;
 		cout << "So you have to be careful with your step" << endl;
-		sleep(8);
+		sleep(5);
 		clrScreen();
 		cout << "For this puzzle you need to make it through the shop and collect pieces of clothing." << endl;
 		cout << "To get through the store you need to answer true or false question press '1'= TRUE and '2'= FALSE." << endl;
 		cout << "Good Luck." << endl;
-		sleep(5);
+		sleep(2);
 		clrScreen();
 
 		//Question 1
@@ -315,16 +317,16 @@ void clothingStore() {
 		if (selectedOption == 1) {
 			cout << "You take your first step into the store. You plant your foot down and nothing seems to happen." << endl;
 			cout << "The zombies didn't notice." << endl;
-			cout << "You got 5 pieces of cloths"<<endl;
+			cout << "You got 5 pieces of cloths" << endl;
 			numofCloths += 5;
-			cout << "You now have " << numofCloths << " pieces of cloth." << endl;		
+			cout << "You now have " << numofCloths << " pieces of cloth." << endl;
 			sleep(3);
 		} else {
 			cout << "You look around for clothing, but in your hurry of searching, you knock over a mannequin." << endl;
-	        cout << "The zombies stop eating and turn their head around." << endl;
-	        cout << "Better Luck Next time." << endl;
-	        sleep(4);
-	        youHaveDied();
+			cout << "The zombies stop eating and turn their head around." << endl;
+			cout << "Better Luck Next time." << endl;
+			sleep(4);
+			youHaveDied();
 		}
 
 		//Question 2
@@ -336,17 +338,17 @@ void clothingStore() {
 		if (selectedOption == 2) {
 			cout << "You keep making your way through the store." << endl;
 			cout << "As the you keep moving the zombies don't seem to be bothered." << endl;
-			cout << "You got 5 pieces of cloths"<<endl;
+			cout << "You got 5 pieces of cloths" << endl;
 			numofCloths += 5;
 			cout << "You now have " << numofCloths << " pieces of cloth." << endl;
 			sleep(3);
 		} else {
 			cout << "You look around for clothing, however you weren't looking down and steped in zombie guts." << endl;
-			cout<< "The crunch of the zombies bones and gut echo throughout the shop."<<endl;
-	        cout << "The zombies stop eating and turn their head around." << endl;
-	        cout << "Better Luck Next time." << endl;
-	        sleep(4);
-	        youHaveDied();
+			cout << "The crunch of the zombies bones and gut echo throughout the shop." << endl;
+			cout << "The zombies stop eating and turn their head around." << endl;
+			cout << "Better Luck Next time." << endl;
+			sleep(4);
+			youHaveDied();
 		}
 
 		//Question 3
@@ -364,11 +366,11 @@ void clothingStore() {
 			sleep(3);
 		} else {
 			cout << "You look around for clothing, however you weren't looking down and steped in zombie guts." << endl;
-			cout<< "The crunch of the zombies bones and gut echo throughout the shop."<<endl;
-	        cout << "The zombies stop eating and turn their head around." << endl;
-	        cout << "Better Luck Next time." << endl; 
-	        sleep(4);
-	        youHaveDied();
+			cout << "The crunch of the zombies bones and gut echo throughout the shop." << endl;
+			cout << "The zombies stop eating and turn their head around." << endl;
+			cout << "Better Luck Next time." << endl;
+			sleep(4);
+			youHaveDied();
 		}
 
 		if (numofCloths >= 15) {
@@ -399,14 +401,14 @@ void medicalOffice() {
 		cout << "You move toward the door and open it." << endl;
 		cout << "As the door creaks open the light from the halway shows the destruction within the room." << endl;
 		cout << "Broken chairs along the floor, the desk flipped on the side with bullet holes around the outside, and floor matresses covered in blood." << endl;
-		sleep(15);
+		sleep(6);
 		cout << "As you search the room you notice a metal standing book shelf still right side up." << endl;
 		cout << "You go over to it and notice that it hiding something attached to the wall." << endl;
 		cout << "With all your might you push the shelf to the side, and notice a metal box on the wall." << endl;
 		cout << "The box had the Red Cross icon on the front read 'First Aid' around the bottom of the box." << endl;
 		cout << "On the side you notice a spin dial lock, and attached to it was piece on paper." << endl;
 		cout << "On the paper were several question to getting the number to unlock the lock" << endl;
-		sleep(15);
+		sleep(6);
 		clrScreen();
 
 		//Question 1
@@ -451,7 +453,7 @@ void medicalOffice() {
 			numOfBandages += 5;
 			cout << "You now have " << numOfBandages << " bandages" << endl;
 			sleep(3);
-			clrScreen();	
+			clrScreen();
 
 			if (numOfBandages >= 15) {
 				cout << "Congradulations you have completed the bandages puzzle" << endl;
@@ -490,8 +492,8 @@ int main() {
 	while (playerHealth > 0 && isPlayerAlive && numberOfCompletedPuzzles != 5) {
 
 		if (fistRunThrough) {
-				//Title
-			cout <<  "Hi, welcome to the SURVIVING ALONE." << endl;
+			//Title
+			cout <<  "Hi, welcome to the Jehovan Whitness Simulator" << endl;
 			cout << "To start the game please prese [ENTER] ";
 			cin.get(enter);
 			clrScreen();
@@ -514,7 +516,7 @@ int main() {
 			cout << "You are driving down the highway to the abandon city of Los Angles. You have been out on the road for days." << endl;
 			cout << "You look at your supplies and see that you have very little left." << endl;
 			cout << "A few pieces of food and 3 bandages" << endl;
-			sleep(10);
+			sleep(5);
 			cout << "You were also on your last gallon of gas" << endl;
 			cout << "As you drive in into the abandon streets of Los Angles, you notice a mall with loads of cars within the parking lot" << endl;
 			cout << "You turn into the parking lot to refill on all of your supplies" << endl << endl;
@@ -526,37 +528,37 @@ int main() {
 
 			if (selectedOption == 1) {
 				clrScreen();
-					cout << "You begin to siphon out the gas from the car, until you begin to hear grunts from the road you came from." << endl;
-					cout << "You look in the direction and begin to panic. There across the road you see a bunch of zombies pop out between the alleys of the buildings." << endl;
-					cout << "You frantically start to bring back the tube within the gas tank of the car and began carfully walking to your car." << endl;
-					cout << "However, as soon as you start moving the zombies spot you. To far from the safety of you own car. you began running in the direction of the mall." << endl;
-					cout << endl;
-					sleep(18);
-					cout << "While running you begin to look back to see how far the zombies are to reaching you and to your horror it alot worse." << endl;
-					cout << "Emerging from the shadows of the alleys, more and more zombies came. You did not step upon a group of zombies but a hoard instead." << endl;
-					cout << "You begin to run faster and faster until you reached the entrance of the mall. As you quickly walk in you, wihtout paying much attension, you foot it triped by the uneven ground below." << endl;
-					cout << "You fall down the escaltor stairs and black out." << endl;
-					cout << endl;
-					sleep(25);
-					clrScreen();
-					cout << "You wake up hours later on the floor of the mall." << endl;
-					cout << "Your as you begin to move he hear loud grunting sounds all around you." << endl;
-					cout << "Sacred, you open your eyes to see about 5-6 zombies walking all around you." << endl;
-					cout << "Out the corner of your eye you spot two store which sutible places to hide in" << endl;
+				cout << "You begin to siphon out the gas from the car, until you begin to hear grunts from the road you came from." << endl;
+				cout << "You look in the direction and begin to panic. There across the road you see a bunch of zombies pop out between the alleys of the buildings." << endl;
+				cout << "You frantically start to bring back the tube within the gas tank of the car and began carfully walking to your car." << endl;
+				cout << "However, as soon as you start moving the zombies spot you. To far from the safety of you own car. you began running in the direction of the mall." << endl;
+				cout << endl;
+				sleep(6);
+				cout << "While running you begin to look back to see how far the zombies are to reaching you and to your horror it alot worse." << endl;
+				cout << "Emerging from the shadows of the alleys, more and more zombies came. You did not step upon a group of zombies but a hoard instead." << endl;
+				cout << "You begin to run faster and faster until you reached the entrance of the mall. As you quickly walk in you, wihtout paying much attension, you foot it triped by the uneven ground below." << endl;
+				cout << "You fall down the escaltor stairs and black out." << endl;
+				cout << endl;
+				sleep(8);
+				clrScreen();
+				cout << "You wake up hours later on the floor of the mall." << endl;
+				cout << "Your as you begin to move he hear loud grunting sounds all around you." << endl;
+				cout << "Sacred, you open your eyes to see about 5-6 zombies walking all around you." << endl;
+				cout << "Out the corner of your eye you spot two store which sutible places to hide in" << endl;
 
-					cout << "1 - The Clothing Store" << endl;
-					cout << "2 - The Medical Office" << endl;
+				cout << "1 - The Clothing Store" << endl;
+				cout << "2 - The Medical Office" << endl;
 
-					cin >> selectedOption;
-					if (!cin || selectedOption > 2 || selectedOption < 1) die();
+				cin >> selectedOption;
+				if (!cin || selectedOption > 2 || selectedOption < 1) die();
 
-					if (selectedOption == 1) {
-						sleep(2);
-						clothingStore();
-					} else {
-						sleep(2);
-						medicalOffice();
-					}
+				if (selectedOption == 1) {
+					sleep(2);
+					clothingStore();
+				} else {
+					sleep(2);
+					medicalOffice();
+				}
 
 			} else {
 				clrScreen();
@@ -600,20 +602,20 @@ int main() {
 				if (!cin || selectedOption > 5 || selectedOption < 1) die();
 
 				switch (selectedOption) {
-					case 1:
-						clothingStore();
-						break;
-					case 2:
-						medicalOffice();
-						break;
-					case 3:
-						gunStore();
-						break;
-					case 4:
-						foodCourt();
-						break;
-					default:
-						break;
+				case 1:
+					clothingStore();
+					break;
+				case 2:
+					medicalOffice();
+					break;
+				case 3:
+					gunStore();
+					break;
+				case 4:
+					foodCourt();
+					break;
+				default:
+					break;
 				}
 			} else {
 				clrScreen();
