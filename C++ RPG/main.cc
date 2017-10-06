@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdlib.h>
+#include <unistd.h>
 using namespace std;
 
 //if currentStore == 1 then they are in the Clothing Store
@@ -30,7 +31,7 @@ int globalPlayerArmor = 0;
 int globalNumberofBandages = 0;
 int globalPiecesofFood = 0;
 int globalNumberofBullets = 10;
-int globalNumberofGunKilledZombies = 0
+int globalNumberofGunKilledZombies = 0;
 int globalNumberofSilentKilledZombies = 0;
 
 //Puzzle Info
@@ -88,9 +89,31 @@ int randomNumberGenerator(int lo, int hi) {
     return 1 + i;
 }
 
+
+int main() {
+
+	while (globalPlayerHeath > 0) {
+		if (completedPuzzles == 5) {
+			winnerChickenDinner();
+		}
+
+		if (amountOfRolls <= 5) {
+			dayCnt++;
+		}
+
+		if (dayCnt == 1) {
+			day1BullShit();
+		} else {
+			clrScreen();
+      multiDay(dayCnt);
+		}
+	}
+
+}
+
 void incorrectPuzzleAnswer() {
 	cout << "You suck. You can't get into the medic room yet. Please reroll the dice." << '\n';
-	rollDice();
+	rollDice(1,10);
 }
 
 //Sets up the different locations.
@@ -178,7 +201,7 @@ void medicalOffice() {
 			incorrectPuzzleAnswer();
 		}
 	} else {
-		if (randomNumberGenerator > 5) {
+		if (randomNumberGenerator() > 5) {
 			 cout << "You have gained 5 bandages" << '\n';
 			globalNumberofBandages += 5;
 		} else {
@@ -242,7 +265,7 @@ void killSilently() {
 		if (randomNumberGenerator() > 3) {
 			globalNumberofSilentKilledZombies++;
 		} else {
-			globalPlayerHeath = globalPlayerHeath * 0.95
+			globalPlayerHeath = globalPlayerHeath * 0.95;
 			cout << "Ouch!!! That one hurt" << endl;
 			cout << "Your health has been dropped to: " << globalPlayerHeath << endl;
 		}
@@ -250,7 +273,7 @@ void killSilently() {
 	}
 	cout << "You have killed " << globalNumberofSilentKilledZombies << " zombies silently." << endl;
 	if (globalNumberofSilentKilledZombies >= 2) {
-		cout << "You have completed the killing zombies silently puzzle."
+		cout << "You have completed the killing zombies silently puzzle.";
 		completedPuzzles++;
 		cout << "You have completed " << completedPuzzles << " of 5" << endl;
 	}
@@ -522,27 +545,6 @@ void multiDay(int dayCounter) {
     sleep(4);
     foodCourt();
   }
-
-}
-
-int main() {
-
-	while (globalPlayerHeath > 0) {
-		if (completedPuzzles == 5) {
-			winnerChickenDinner();
-		}
-
-		if (amountOfRolls <= 5) {
-			dayCnt++;
-		}
-
-		if (dayCnt == 1) {
-			day1BullShit();
-		} else {
-			clrScreen();
-      multiDay(dayCnt);
-		}
-	}
 
 }
 
