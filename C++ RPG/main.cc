@@ -181,11 +181,7 @@ void winnerChickenDinner() {
 	cout << "2 - No" << '\n';
 	cin >> selectedOption;
 	if (!cin || selectedOption > 2 || selectedOption < 1) die();
-	if (selectedOption == 1) {
-		main();
-	} else {
-		exit(0);
-	}
+	exit(0);
 }
 
 void haveBeenKilled() {
