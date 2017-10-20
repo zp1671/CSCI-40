@@ -8,7 +8,6 @@ int board[SIZE][SIZE] = {};
 //Makes a bunch of constants for the letters to be printed on the board
 enum tiles { CLEAR = 0, DESTROYER, SUBMARINE, BATTLESHIP, AIRCRAFT_CARRIER, HIT, MISS };
 int message = 0; //If a ship has been destroyed, it will be set to BATTLESHIP or whatever
-int numOfDestroyedShips = 0;
 
 //Holds how big each ship is
 enum sizes { DESTROYER_SIZE = 2, SUBMARINE_SIZE = 3, BATTLESHIP_SIZE = 4, AIRCRAFT_CARRIER_SIZE = 5 };
@@ -18,10 +17,7 @@ void die() {
 	exit(1);
 }
 
-bool isDestroyer = true;
-bool isSubmarine = true;
-bool isBattleship = true;
-bool isAircraftCarrier = true;
+bool isDestroyer = true, isSubmarine = true, isBattleship = true, isAircraftCarrier = true;
 
 void win(); //Function prototype, ends the game successfully
 void lose(); //Ends the game with failure
@@ -219,21 +215,21 @@ int main() {
 			// In other words, if that was the last of the battleship,
 			// set message = BATTLESHIP. This will cause "You sank my battleship!" to be
 			// printed the next time the board is displayed instead of just "HIT!"
-			int dShipCtn = 0;
-			int sShipCtn = 0;
-			int bShipCtn = 0;
-			int aShipCtn = 0;
+			int dShipCtn = 0, sShipCtn = 0, bShipCtn = 0, aShipCtn = 0;
 
 			for (int i = 0; i < SIZE; i++) {
 				for (int j = 0; j < SIZE; j++) {
-					if (board[i][j] == DESTROYER) {
-						dShipCtn++;
-					} else if (board[i][j] == SUBMARINE) {
-						sShipCtn++;
-					} else if (board[i][j] == BATTLESHIP) {
-						bShipCtn++;
-					} else if (board[i][j] == AIRCRAFT_CARRIER) {
-						aShipCtn++;
+					switch (board[i][j]) {
+						case 1:
+							dShipCtn++;
+						case 2; 
+							sShipCtn++;
+						case 3;
+							bShipCtn++;
+						case 4:
+							aShipCtn++;
+						default:
+							break;
 					}
 				}
 			}
@@ -252,14 +248,12 @@ int main() {
 				isAircraftCarrier = false;
 			} 
 
-			if (dShipCtn == 0 && sShipCtn == 0 && bShipCtn == 0 && aShipCtn == 0) {
-				win();
-			}
+			if (dShipCtn == 0 && sShipCtn == 0 && bShipCtn == 0 && aShipCtn == 0) win();
 		}
+
 		//YOU: Reduce torpedoes by 1
 		torpedoes -= 1;
 		//YOU: If torpedoes is < 0, call lose();
-		cout << torpedoes << endl;
 		if (torpedoes < 0) lose();
 
 	}
