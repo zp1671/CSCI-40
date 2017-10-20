@@ -8,6 +8,7 @@ int board[SIZE][SIZE] = {};
 //Makes a bunch of constants for the letters to be printed on the board
 enum tiles { CLEAR = 0, DESTROYER, SUBMARINE, BATTLESHIP, AIRCRAFT_CARRIER, HIT, MISS };
 int message = 0; //If a ship has been destroyed, it will be set to BATTLESHIP or whatever
+int numOfDestroyedShips = 0;
 
 //Holds how big each ship is
 enum sizes { DESTROYER_SIZE = 2, SUBMARINE_SIZE = 3, BATTLESHIP_SIZE = 4, AIRCRAFT_CARRIER_SIZE = 5 };
@@ -47,7 +48,13 @@ void print_board() {
 	if (message == MISS) 		cout << "MISS!\n";
 	else if (message == HIT) 		cout << "HIT!\n";
 	else if (message == DESTROYER) 	cout << "You sank my destroyer!\n";
+	else if (message == SUBMARINE) cout << "You sank my submarine!\n";
+	else if (message == BATTLESHIP) cout << "You sank my battleship!\n";
+	else if (message == AIRCRAFT_CARRIER) cout << "You sank my aircraft carrier!\n";
 	//YOU: Do the rest
+	if (message == DESTROYER || message == SUBMARINE || message == BATTLESHIP || message == AIRCRAFT_CARRIER) {
+		numOfDestroyedShips++;
+	}
 
 	message = 0; //Clear the message so it doesn't display again.
 }
@@ -58,12 +65,15 @@ int main() {
 	getchar();
 
 	//PHASE 1 - Set up the ships on the board
+
+	//DESTROYER PLACEMENT
 	print_board();
 	cout << "Please insert the (x,y) starting location for the destroyer:\n";
 	int x = 0, y = 0;
 	cin >> x >> y;
 	if (!cin) die();
 	//YOU: Error check the coordinates
+	if (x < 0 || x > SIZE - 1 || y < 0 || y > SIZE - 1) die(); 
 	cout << "Is the destroyer vertical (v) or horizontal (h)?\n";
 	char c = 0;
 	cin >> c;
@@ -71,43 +81,159 @@ int main() {
 	if (c == 'v') { //If vertical, we start at the top and go down
 		for (int i = 0; i < DESTROYER_SIZE; i++) {
 			//YOU: Error check the coordinates
-			board[x][y] = DESTROYER;
-			y++;
+			if (y < SIZE) {
+				board[x][y] = DESTROYER;
+				y++;
+			} else {
+				die();
+			}
 		}
 	} else if (c == 'h') {
 		//YOU: Do the same for a horizontal ship
+		for (int i = 0; i < DESTROYER_SIZE; i++) {
+			if (board[x][y] == CLEAR) {
+				if (x < SIZE) {
+					board[x][y] = DESTROYER;
+					x++;
+				} else {
+					die();
+				}
+			} else die();
+	
+		}
 	} else die();
 	print_board();
+
 	//YOU: Do the same for the other three ships
+	//SUBMARINE PLACEMENT
+	cout << "Please insert the (x,y) starting location for the submarine:\n";
+	cin >> x >> y;
+	if (!cin || x > SIZE - 1 || x < 0 || y > SIZE - 1 || y < 0) die();
+	cout << "Is the submarine vertical (v) or horizontal (h)?\n";
+	cin >> c;
+	if (c == 'v') {
+		for (int i = 0; i < SUBMARINE_SIZE; i++) {
+			if (board[x][y] == CLEAR) {
+				if (y < SIZE) {
+					board[x][y] = SUBMARINE;
+					y++;
+				} else die();	
+			} else die();
+		}
+	} else if (c == 'h') {
+		for (int i = 0; i < SUBMARINE_SIZE; i++) {
+			if (board[x][y] == CLEAR) {
+				if (x < SIZE) {
+					board[x][y] = SUBMARINE;
+					x++;
+				} else {
+					die();
+				}
+			} else die();
+	
+		}
+	} else die();
+	print_board();
+
+	//BATTLESHIP PLACEMENT
+	cout << "Please insert the (x,y) starting location for the battleship: \n";
+	cin >> x >> y;
+	if (!cin || x > SIZE - 1 || x < 0 || y > SIZE - 1 || y < 0) die();
+	cout << "Is the battleship vertical (v) or horizontal (h)?\n";
+	cin >> c;
+	if (c == 'v') {
+		for (int i = 0; i < BATTLESHIP_SIZE; i++) {
+			if (board[x][y] == CLEAR) {
+				if (y < SIZE) {
+					board[x][y] = BATTLESHIP;
+					y++;
+				} else die();
+			} else die();
+		}
+	} else if (c == 'h') {
+		for (int i = 0; i < BATTLESHIP_SIZE; i++) {
+			if (board[x][y] == CLEAR) {
+				if (x < SIZE) {
+					board[x][y] = BATTLESHIP;
+					x++;
+				} else die();
+			} else die();
+		}
+	} else die();
+	print_board();
+
+	cout << "Please insert the (x,y) starting location for the aircraft carrier: \n";
+	cin >> x >> y;
+	if (!cin || x > SIZE -1 || x < 0 || y > SIZE - 1 || y < 0) die();
+	cout << "Is the aircraft carrier vertical (v) or horizontal (h)? \n";
+	cin >> c;
+	if (c == 'v') {
+		for (int i = 0; i < AIRCRAFT_CARRIER_SIZE; i++) {
+			if (board[x][y] == CLEAR) {
+				if (y < SIZE) {
+					board[x][y] = AIRCRAFT_CARRIER;
+					y++;
+				} else die();
+			} else die();
+		}
+	} else if (c == 'h') {
+		for (int i =0; i < AIRCRAFT_CARRIER_SIZE; i++) {
+			if (board[x][y] == CLEAR) {
+				if (x < SIZE) {
+					board[x][y] = AIRCRAFT_CARRIER;
+					x++;
+				} else die();
+			} else die();
+		}
+	} else die();
 
 	//PHASE 2 - Shoot torpedoes at the ships until they're all destroyed
 	int torpedoes = 40; //If these run out, we lose
-	while (true) { //Main loop
-		print_board(); //Display the world state
 
+	//Main loop
+	while (true) {  
+		print_board(); //Display the world state
 		//Input next move
 		cout << "Please enter where you want to shoot a torpedo:\n";
 		cin >> x >> y;
-		if (!cin) die(); //YOU: Add in bounds checks for x and y
+		if (!cin || x < 0 || x > 11 || y < 0 || y > 11) die(); //YOU: Add in bounds checks for x and y
 
 		if (board[x][y] == CLEAR || board[x][y] == HIT || board[x][y] == MISS) {
 			message = MISS; //This will do a cout << "MISS!\n"; when the board is next printed
 
 			//YOU: When should it not register a miss? Add an if statement for that
-			board[x][y] = MISS;
-		} else { //Hit!
+
+			if (board[x][y] == HIT || board[x][y] == MISS) {
+
+			} else {
+				board[x][y] = MISS;
+			}
+		} else { 
+			//Hit!
 			message = HIT;
 			//YOU: Mark the board with a hit
-
+			board[x][y] = HIT;
 			//YOU: If that was the last one of a certain ship, set message.
 			// In other words, if that was the last of the battleship,
 			// set message = BATTLESHIP. This will cause "You sank my battleship!" to be
 			// printed the next time the board is displayed instead of just "HIT!"
 
+			for (int i = 0; i < SIZE; i++) {
+				for (int j = 0; j < SIZE; j++) {
+					
+				}
+			}
+
 			//YOU: If no ships are remaining, call win();
+			if (numOfDestroyedShips == 4) {
+				win();
+			}
 		}
 		//YOU: Reduce torpedoes by 1
+		torpedoes--;
 		//YOU: If torpedoes is < 0, call lose();
+		if (torpedoes <= 0) lose();
+
 	}
 }
 
