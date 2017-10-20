@@ -18,6 +18,11 @@ void die() {
 	exit(1);
 }
 
+bool isDestroyer = true;
+bool isSubmarine = true;
+bool isBattleship = true;
+bool isAircraftCarrier = true;
+
 void win(); //Function prototype, ends the game successfully
 void lose(); //Ends the game with failure
 
@@ -52,9 +57,6 @@ void print_board() {
 	else if (message == BATTLESHIP) cout << "You sank my battleship!\n";
 	else if (message == AIRCRAFT_CARRIER) cout << "You sank my aircraft carrier!\n";
 	//YOU: Do the rest
-	if (message == DESTROYER || message == SUBMARINE || message == BATTLESHIP || message == AIRCRAFT_CARRIER) {
-		numOfDestroyedShips++;
-	}
 
 	message = 0; //Clear the message so it doesn't display again.
 }
@@ -217,15 +219,40 @@ int main() {
 			// In other words, if that was the last of the battleship,
 			// set message = BATTLESHIP. This will cause "You sank my battleship!" to be
 			// printed the next time the board is displayed instead of just "HIT!"
+			int dShipCtn = 0;
+			int sShipCtn = 0;
+			int bShipCtn = 0;
+			int aShipCtn = 0;
 
 			for (int i = 0; i < SIZE; i++) {
 				for (int j = 0; j < SIZE; j++) {
-					
+					if (board[i][j] == DESTROYER) {
+						dShipCtn++;
+					} else if (board[i][j] == SUBMARINE) {
+						sShipCtn++;
+					} else if (board[i][j] == BATTLESHIP) {
+						bShipCtn++;
+					} else if (board[i][j] == AIRCRAFT_CARRIER) {
+						aShipCtn++;
+					}
 				}
 			}
 
-			//YOU: If no ships are remaining, call win();
-			if (numOfDestroyedShips == 4) {
+			if (dShipCtn == 0 && isDestroyer == true) {
+				message = DESTROYER;
+				isDestroyer = false;
+			} else if (sShipCtn == 0 && isSubmarine == true) {
+				message = SUBMARINE;
+				isSubmarine = false;
+			} else if (bShipCtn == 0 && isBattleship == true) {
+				message = BATTLESHIP;
+				isBattleship = false;
+			} else if (aShipCtn == 0 && isAircraftCarrier == true) {
+				message = AIRCRAFT_CARRIER;
+				isAircraftCarrier = false;
+			} 
+
+			if (dShipCtn == 0 && sShipCtn == 0 && bShipCtn == 0 && aShipCtn == 0) {
 				win();
 			}
 		}
