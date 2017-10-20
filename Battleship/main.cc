@@ -71,7 +71,7 @@ int main() {
 	cin >> x >> y;
 	if (!cin) die();
 	//YOU: Error check the coordinates
-	if (x < 0 || x > SIZE - 1 || y < 0 || y > SIZE - 1) die(); 
+	if (x < 0 || x > SIZE - 1 || y < 0 || y > SIZE - 1) die();
 	cout << "Is the destroyer vertical (v) or horizontal (h)?\n";
 	char c = 0;
 	cin >> c;
@@ -97,7 +97,7 @@ int main() {
 					die();
 				}
 			} else die();
-	
+
 		}
 	} else die();
 	print_board();
@@ -115,7 +115,7 @@ int main() {
 				if (y < SIZE) {
 					board[x][y] = SUBMARINE;
 					y++;
-				} else die();	
+				} else die();
 			} else die();
 		}
 	} else if (c == 'h') {
@@ -128,7 +128,7 @@ int main() {
 					die();
 				}
 			} else die();
-	
+
 		}
 	} else die();
 	print_board();
@@ -162,7 +162,7 @@ int main() {
 
 	cout << "Please insert the (x,y) starting location for the aircraft carrier: \n";
 	cin >> x >> y;
-	if (!cin || x > SIZE -1 || x < 0 || y > SIZE - 1 || y < 0) die();
+	if (!cin || x > SIZE - 1 || x < 0 || y > SIZE - 1 || y < 0) die();
 	cout << "Is the aircraft carrier vertical (v) or horizontal (h)? \n";
 	cin >> c;
 	if (c == 'v') {
@@ -175,7 +175,7 @@ int main() {
 			} else die();
 		}
 	} else if (c == 'h') {
-		for (int i =0; i < AIRCRAFT_CARRIER_SIZE; i++) {
+		for (int i = 0; i < AIRCRAFT_CARRIER_SIZE; i++) {
 			if (board[x][y] == CLEAR) {
 				if (x < SIZE) {
 					board[x][y] = AIRCRAFT_CARRIER;
@@ -189,7 +189,7 @@ int main() {
 	int torpedoes = 40; //If these run out, we lose
 
 	//Main loop
-	while (true) {  
+	while (true) {
 		print_board(); //Display the world state
 		//Input next move
 		cout << "Please enter where you want to shoot a torpedo:\n";
@@ -206,7 +206,7 @@ int main() {
 			} else {
 				board[x][y] = MISS;
 			}
-		} else { 
+		} else {
 			//Hit!
 			message = HIT;
 			//YOU: Mark the board with a hit
@@ -220,16 +220,16 @@ int main() {
 			for (int i = 0; i < SIZE; i++) {
 				for (int j = 0; j < SIZE; j++) {
 					switch (board[i][j]) {
-						case 1:
-							dShipCtn++;
-						case 2: 
-							sShipCtn++;
-						case 3:
-							bShipCtn++;
-						case 4:
-							aShipCtn++;
-						default:
-							break;
+					case 1:
+						dShipCtn++;
+					case 2:
+						sShipCtn++;
+					case 3:
+						bShipCtn++;
+					case 4:
+						aShipCtn++;
+					default:
+						break;
 					}
 				}
 			}
@@ -246,7 +246,7 @@ int main() {
 			} else if (aShipCtn == 0 && isAircraftCarrier == true) {
 				message = AIRCRAFT_CARRIER;
 				isAircraftCarrier = false;
-			} 
+			}
 
 			if (dShipCtn == 0 && sShipCtn == 0 && bShipCtn == 0 && aShipCtn == 0) win();
 		}
