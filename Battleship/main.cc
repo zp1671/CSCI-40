@@ -222,9 +222,9 @@ int main() {
 					switch (board[i][j]) {
 						case 1:
 							dShipCtn++;
-						case 2; 
+						case 2: 
 							sShipCtn++;
-						case 3;
+						case 3:
 							bShipCtn++;
 						case 4:
 							aShipCtn++;
