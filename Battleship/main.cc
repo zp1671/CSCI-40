@@ -257,9 +257,10 @@ int main() {
 			}
 		}
 		//YOU: Reduce torpedoes by 1
-		torpedoes--;
+		torpedoes -= 1;
 		//YOU: If torpedoes is < 0, call lose();
-		if (torpedoes <= 0) lose();
+		cout << torpedoes << endl;
+		if (torpedoes < 0) lose();
 
 	}
 }
