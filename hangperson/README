@@ -1,0 +1,80 @@
+==================
+	Hangperson
+==================
+
+For this assignment, you will implement hangman (here called Hangperson) a classic
+word-guessing game. Hangman, if you haven't played it before, involves one
+person choosing a secret word, and the other person guessing one letter at a
+time until they get it right. If enough guesses are wrong (by default, 6)
+then the person guessing loses.
+
+We will be implementing a single-player version where the computer will
+randomly select a word for you.
+
+1) You will ask the person "What difficulty do you want?\n". The hardest
+difficulty allowed is 1 (which means they lose after one wrong guess), the
+easiest difficulty is 10. If they enter a number less than 1 or higher than
+10, call the die() function.
+
+Output: "Difficulty set to X.\n" where X is the difficulty entered.
+
+2) You will need to open up the /usr/share/dict/words file that
+contains an English dictionary. Load all of the words from the dictionary into
+a vector of strings. Do NOT load any words with a capital letter or a
+punctuation mark. (For example, "apple" is okay to load into the vector,
+"Applebee's" is not, because it has a capital A and an apostrophe.)
+Uppercaseify all of the words after vetting them. (I.e. "apple" will be saved
+into the vector as "APPLE", "banana" as "BANANA".)
+
+Output: "X words loaded.\n", where X is the number of words loaded. (You can use
+the size of the vector here, if you did the vetting right.)
+
+3) You will ask the user, "Please enter a random seed:\n". You will
+read this seed in from the user (it is an unsigned integer). You will then
+call srand and pass to it this seed read. (For example, srand(seed).)
+
+You will pick a random word from the dictionary. Assuming your vector of
+words holding the dictionary above is called dict, you will write: 
+int index = rand() % dict.size();
+
+The string at this index will be your secret word. 
+
+Output: "The secret word is: X\n" where X is the secret word chosen.
+
+Note: If you want to play this game for realsies, comment this out so you
+don't get spoilered. But it needs to be in for the autograder to give you
+credit when the assignment is submitted.
+
+4) You will now enter the main loop. You will do the following in an infinite
+loop:
+A) Print "X guesses remaining" where X is the guesses remaining (i.e. the
+difficulty minus the number of wrong guesses they've made).
+B) Print the word being guessed, as such: any letter not guessed yet 
+will be printed as an underscore; any letter guess will be printed. (Example,
+if the word is APPLE and they have guessed a P and E, then it will print
+"_PP_E" followed by a newline.) You should probably use a vector<bool> of size
+26 to keep track of which letters have been guessed.
+C) You will then print "Please enter a guess:\n". They will enter a character.
+If it is anything but a letter, die(). If it is a letter they have already
+guessed before, die(). If the letter is in the word, print "Letter is in
+the word!\n", otherwise print "Wrong guess!\n" and deduct one guess. (You do
+not deduct a guess if they guessed a correct letter.)
+D) If the number of guesses remaining is zero, end the game and print "YOU
+LOSE!\n"
+E) If all of the letters in the word have been guessed, end the game and print
+"A WINNER IS YOU!\n".
+
+Otherwise, the loop will repeat.
+
+Notes:
+In the source code, you will see I have inserted a number of functions called
+"continue_check()" - all this does is prompt the user if they want to
+continue. This allows me to award you partial credit for the assignment in
+case you don't do the whole thing. Don't take them out, even though they're a
+bit annoying.
+
+If cin ever becomes invalid, then die().
+
+If the dictionary file can't be read from, then die().
+
+If the dictionary contains zero words, die().
